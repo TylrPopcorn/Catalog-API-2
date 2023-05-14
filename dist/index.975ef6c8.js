@@ -27164,23 +27164,17 @@ function App() {
     (0, _react.useEffect)(()=>{
         //console.log("UseEffect - running");
         const randomTime = Math.floor(Math.random() * 1000) + 1000; //Loading effect.
-    // setTimeout(async () => {
-    //   //Attempt to get any current hats in the database:
-    //   let CURRENT_hats = await functions.getResponse(
-    //     "http://localhost:9000/api/hats/"
-    //   );
-    //   if (Object.keys(CURRENT_hats).length <= 0) {
-    //     //IF there are no hats in the database, import some starters.
-    //     CURRENT_hats = await functions.getResponse(
-    //       "http://localhost:9000/api/hats/imports"
-    //     );
-    //   }
-    //   //
-    //   setData({
-    //     ...data,
-    //     items: CURRENT_hats,
-    //   });
-    // }, randomTime);
+        setTimeout(async ()=>{
+            //Attempt to get any current hats in the database:
+            let CURRENT_hats = await (0, _appModelDefault.default).getResponse("http://localhost:9000/api/hats/");
+            if (Object.keys(CURRENT_hats).length <= 0) //IF there are no hats in the database, import some starters.
+            CURRENT_hats = await (0, _appModelDefault.default).getResponse("http://localhost:9000/api/hats/imports");
+            //
+            setData({
+                ...data,
+                items: CURRENT_hats
+            });
+        }, randomTime);
     }, []);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "App",

@@ -1,0 +1,122 @@
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: Courier New, Courier;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+:root {
+  --var-neon: #ee0e59;
+}
+
+.App {
+  color: #fff;
+  min-height: 100vh;
+  width: 100%;
+  min-width: 100vh;
+  background-color: #0a0a0a;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.title {
+  color: var(--var-neon);
+  text-shadow: 0 0 .525em var(--var-neon), 0 0 .6em currentColor;
+  font-size: 40px;
+}
+
+.link {
+  color: #fff;
+  margin-top: -25px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.list-container {
+  width: 60%;
+}
+
+.list-container li {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #191919;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 2em;
+  list-style: none;
+  overflow: hidden;
+  box-shadow: inset 0 0 .5em #000, 0 0 .25em #000;
+}
+
+.loading-container {
+  text-align: center;
+  color: var(--var-neon);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.item-container {
+  border: 3px solid var(--var-neon);
+  height: 80px;
+  background-color: hsla(var(--test), .3);
+  box-shadow: inset 0 0 .6em var(--var-neon);
+  cursor: pointer;
+  color: var(--var-neon);
+  text-shadow: 0 0 .085em var(--var-neon), 0 0 .2em var(--var-neon);
+  border-radius: 12px;
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+.list-container li div {
+  justify-content: space-between;
+  display: flex;
+}
+
+.list-container li .item-container:hover {
+  background-color: var(--var-neon);
+  color: #fff;
+  text-shadow: 0 0 .035em #000, 0 0 .05em #000;
+  box-shadow: 0 0 .8em 0 var(--var-neon);
+  margin: 8px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.list-container li div .itm-img-section {
+  background-color: #0000;
+  overflow: hidden;
+}
+
+.itm-img-section img {
+  height: 90%;
+  min-width: 50%;
+  border-radius: 20px;
+  margin: 3% 3% 3% 5px;
+}
+
+.item-id {
+  text-align: left;
+  background-color: #0000;
+  margin-top: 33px;
+  margin-left: 5px;
+  font-size: 60%;
+}
+
+.item-name {
+  max-width: 60%;
+  min-width: 15%;
+  text-align: right;
+  height: 50%;
+  margin-top: 23px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=index.3b8f328d.css.map */

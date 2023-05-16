@@ -10,7 +10,7 @@ code {
 }
 
 :root {
-  --var-neon: #ee0e59;
+  --var-neon: #0eee85;
 }
 
 .App {
@@ -90,23 +90,23 @@ code {
 }
 
 .list-container li div .itm-img-section {
-  background-color: #0000;
   overflow: hidden;
 }
 
 .itm-img-section img {
   height: 90%;
-  min-width: 50%;
+  min-width: 30%;
   border-radius: 20px;
   margin: 3% 3% 3% 5px;
 }
 
 .item-id {
   text-align: left;
+  width: 200px;
   background-color: #0000;
-  margin-top: 33px;
+  margin-top: 32px;
   margin-left: 5px;
-  font-size: 60%;
+  font-size: 70%;
 }
 
 .item-name {

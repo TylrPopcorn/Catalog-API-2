@@ -27270,6 +27270,8 @@ function createLabel(data) {
     // console.log(data, "Creating label....");
     const items = Object.keys(data);
     return items.map((item, idx)=>{
+        const { id , name , url , thumbnailUrl  } = data[item];
+        console.log(data[item], "<-------");
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: `item-container ${item}`,
             onClick: functions.getInfo,
@@ -27279,43 +27281,44 @@ function createLabel(data) {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             className: "item-thumbnail",
-                            alt: "",
-                            src: "https://cdn.discordapp.com/attachments/548209804825460760/1064417656125542400/Screenshot_2023-01-16_at_12.34.58_AM.png"
+                            // title={url}
+                            alt: "N/A",
+                            src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 30,
+                            lineNumber: 33,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "item-id",
                             children: [
                                 " ",
-                                data[item].id,
+                                id,
                                 " "
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 35,
+                            lineNumber: 39,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 29,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "item-name",
-                    children: data[item].name
+                    children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 37,
+                    lineNumber: 41,
                     columnNumber: 9
                 }, this)
             ]
-        }, data[item].id || idx, true, {
+        }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 24,
+            lineNumber: 27,
             columnNumber: 7
         }, this);
     });

@@ -1,6 +1,7 @@
 //
 //
 const axios = require("axios");
+
 const hatsData = {
   ALL_Hats: {},
   Deleted_Hats: {},
@@ -21,9 +22,19 @@ async function getNewHats() {
 
   const { data } = gethats.data;
   for (let hat of data) {
-    if (hatsData.Deleted_Hats[hat.name] == null) {
+    const { name, id } = hat;
+    const moreData = await axios.get(
+      //This is a little bit more different information about the current item.
+      `https://www.roblox.com/item-thumbnails?params=[{assetId:${id}}]`
+    );
+
+    const { url, thumbnailUrl } = moreData.data[0];
+    hat.url = url;
+    hat.thumbnailUrl = thumbnailUrl;
+
+    if (hatsData.Deleted_Hats[name] == null) {
       //We only want the hats that the user has not removed.
-      hatsData.ALL_Hats[hat.name] = hat;
+      hatsData.ALL_Hats[name] = hat;
     }
   }
 

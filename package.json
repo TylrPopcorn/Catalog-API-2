@@ -14,9 +14,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "app": "npx kill-port 9000 && npm run start && npm run server",
-    "server": "nodemon api/index.js",
-    "start": "parcel ./index.html"
+    "app": "npm run start && npm run server",
+    "server": "npx kill-port 9000 && nodemon api/index.js",
+    "client": "npx kill-port 1234 && parcel ./index.html"
   },
   "keywords": [],
   "author": "",

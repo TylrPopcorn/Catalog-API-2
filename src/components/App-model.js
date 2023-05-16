@@ -20,21 +20,25 @@ export function createLabel(data) {
   // console.log(data, "Creating label....");
   const items = Object.keys(data);
   return items.map((item, idx) => {
+    const { id, name, url, thumbnailUrl } = data[item];
+    console.log(data[item], "<-------");
+
     return (
       <div
         className={`item-container ${item}`}
-        key={data[item].id || idx}
+        key={id || idx}
         onClick={functions.getInfo}
       >
         <div className="itm-img-section">
           <img
             className="item-thumbnail"
-            alt=""
-            src="https://cdn.discordapp.com/attachments/548209804825460760/1064417656125542400/Screenshot_2023-01-16_at_12.34.58_AM.png"
+            // title={url}
+            alt="N/A"
+            src={thumbnailUrl}
           />
-          <p className="item-id"> {data[item].id} </p>
+          <p className="item-id"> {id} </p>
         </div>
-        <p className="item-name">{data[item].name}</p>
+        <p className="item-name">{name}</p>
       </div>
     );
   });

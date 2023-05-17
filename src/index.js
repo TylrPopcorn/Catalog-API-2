@@ -7,13 +7,18 @@ import App from "./components/App";
  * DEPENDENCIES:
  * npm i react
  * npm i parcel-bundler
+ * npm i react-router-dom
  *
  */
+
+import { BrowserRouter as Router } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 /* Run the main component/function */
 root.render(
   //   <React.StrictMode>
-  <App />
+  <Router>
+    <App />
+  </Router>
   //   </React.StrictMode>
 );

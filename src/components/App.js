@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import functions from "./App-model"; //Helper functions that support the overall app function
 //import {createLabel, getResponse,} from "./App-model"; //helper functions
+
+import { Routes, Route } from "react-router-dom";
 //------------------
 function App() {
   const [data, setData] = useState({
@@ -52,12 +54,12 @@ function App() {
       {/* LIST CONTAINER */}
       <div className="list-container">
         <li>
-          {/* ------------------------------------------- */}
-          {Object.keys(data.items).length > 0
-            ? (console.log("sdghnfder"), functions.createLabel(data.items))
-            : (console.log("NO DATA"),
-              (<p className="loading-container">{data.loadingMsg}</p>))}
-          {/* ------------------------------------------- */}
+          {/* <functions.mainPage /> */}
+          <Routes>
+            <Route exact path="/" element={<functions.mainPage />} />
+
+            <Route path="/:item" element={<functions.secondPage />} />
+          </Routes>
         </li>
       </div>
     </div>

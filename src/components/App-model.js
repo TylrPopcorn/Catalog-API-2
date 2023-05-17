@@ -12,8 +12,31 @@ const functions = {
 
 //This function is responsible for showing information regarding one item:
 functions.getInfo = function () {
-  console.log("YERS");
+  return (
+    <>
+      <h1> TYEST </h1>
+    </>
+  );
 };
+
+functions.mainPage = function () {
+  return <h1> TEST </h1>;
+};
+
+functions.secondPage = function () {
+  return <h1> GDSGHDFHDSFHFDS </h1>;
+};
+
+/*
+  <li>
+     
+          {Object.keys(data.items).length > 0
+            ? (console.log("sdghnfder"), functions.createLabel(data.items))
+            : (console.log("NO DATA"),
+              (<p className="loading-container">{data.loadingMsg}</p>))}
+         
+        </li>
+*/
 
 //This function is repsonsible for creating each label in the list:
 export function createLabel(data) {
@@ -21,7 +44,6 @@ export function createLabel(data) {
   const items = Object.keys(data);
   return items.map((item, idx) => {
     const { id, name, url, thumbnailUrl } = data[item];
-    console.log(data[item], "<-------");
 
     return (
       <div

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import functions from "./App-model"; //Helper functions that support the overall app function
 //import {createLabel, getResponse,} from "./App-model"; //helper functions
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 //------------------
 function App() {
   const [data, setData] = useState({
@@ -11,6 +11,8 @@ function App() {
     items: {}, //all items
     loadingMsg: "Loading...", //msgs for the loading (DEFAULT: Loading...)
   });
+
+  const navigate = useNavigate();
 
   //function that will run after first mount:
   useEffect(() => {
@@ -56,9 +58,13 @@ function App() {
         <li>
           {/* <functions.mainPage /> */}
           <Routes>
-            <Route exact path="/" element={<functions.mainPage />} />
+            <Route
+              exact
+              path="/"
+              element={<functions.mainPage data={data} navigate={navigate} />}
+            />
 
-            <Route path="/:item" element={<functions.secondPage />} />
+            <Route exact path="/:item" element={<functions.secondPage />} />
           </Routes>
         </li>
       </div>

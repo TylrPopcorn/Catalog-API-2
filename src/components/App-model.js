@@ -11,37 +11,37 @@ const functions = {
 };
 
 //This function is responsible for showing information regarding one item:
-functions.getInfo = function () {
-  return (
-    <>
-      <h1> TYEST </h1>
-    </>
-  );
+functions.getInfo = function (navigate) {
+  console.log(navigate);
+  navigate("test");
+
+  setTimeout(() => {
+    navigate("/");
+  }, 7000);
 };
 
-functions.mainPage = function () {
-  return <h1> TEST </h1>;
+functions.mainPage = function (data) {
+  const { items, loadingMsg } = data.data;
+  const navigate = data.navigate;
+  return (
+    <>
+      {items !== undefined && Object.keys(items).length > 0
+        ? (console.log("sdghnfder"), functions.createLabel(items, navigate))
+        : (console.log("NO DATA"),
+          (<p className="loading-container">{loadingMsg}</p>))}
+    </>
+  );
 };
 
 functions.secondPage = function () {
   return <h1> GDSGHDFHDSFHFDS </h1>;
 };
 
-/*
-  <li>
-     
-          {Object.keys(data.items).length > 0
-            ? (console.log("sdghnfder"), functions.createLabel(data.items))
-            : (console.log("NO DATA"),
-              (<p className="loading-container">{data.loadingMsg}</p>))}
-         
-        </li>
-*/
-
 //This function is repsonsible for creating each label in the list:
-export function createLabel(data) {
+export function createLabel(data, navigate) {
   // console.log(data, "Creating label....");
   const items = Object.keys(data);
+
   return items.map((item, idx) => {
     const { id, name, url, thumbnailUrl } = data[item];
 
@@ -49,7 +49,9 @@ export function createLabel(data) {
       <div
         className={`item-container ${item}`}
         key={id || idx}
-        onClick={functions.getInfo}
+        onClick={() => {
+          functions.getInfo(navigate);
+        }}
       >
         <div className="itm-img-section">
           <img

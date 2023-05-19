@@ -27169,6 +27169,7 @@ function App() {
         items: {},
         loadingMsg: "Loading..."
     });
+    const navigate = (0, _reactRouterDom.useNavigate)();
     //function that will run after first mount:
     (0, _react.useEffect)(()=>{
         //console.log("UseEffect - running");
@@ -27193,7 +27194,7 @@ function App() {
                 children: " CATALOG API "
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 43,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27203,7 +27204,7 @@ function App() {
                 children: "https://catalog.roblox.com/v1/search/items/details?Category=11&SortType=3&Limit=10"
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 46,
+                lineNumber: 48,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27214,44 +27215,52 @@ function App() {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 exact: true,
                                 path: "/",
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).mainPage, {}, void 0, false, void 0, void 0)
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).mainPage, {
+                                    data: data,
+                                    navigate: navigate
+                                }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 59,
+                                lineNumber: 61,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                                exact: true,
                                 path: "/:item",
                                 element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).secondPage, {}, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 61,
+                                lineNumber: 67,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/App.js",
-                        lineNumber: 58,
+                        lineNumber: 60,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 56,
+                    lineNumber: 58,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 55,
+                lineNumber: 57,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 41,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }
-_s(App, "JwpUfhYvDigZcfWI/MA8BT2pZvw=");
+_s(App, "Qro6HLX5aohI/nhFZNcIEaKvirk=", false, function() {
+    return [
+        (0, _reactRouterDom.useNavigate)
+    ];
+});
 _c = App;
 //------------
 exports.default = App;
@@ -27272,16 +27281,7 @@ $parcel$ReactRefreshHelpers$02aa.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-/*
-  <li>
-     
-          {Object.keys(data.items).length > 0
-            ? (console.log("sdghnfder"), functions.createLabel(data.items))
-            : (console.log("NO DATA"),
-              (<p className="loading-container">{data.loadingMsg}</p>))}
-         
-        </li>
-*/ //This function is repsonsible for creating each label in the list:
+//This function is repsonsible for creating each label in the list:
 parcelHelpers.export(exports, "createLabel", ()=>createLabel);
 //This is responsible for getting and returning any kind of response from an API.
 parcelHelpers.export(exports, "getResponse", ()=>getResponse);
@@ -27298,43 +27298,46 @@ const functions = {
     getResponse
 };
 //This function is responsible for showing information regarding one item:
-functions.getInfo = function() {
+functions.getInfo = function(navigate) {
+    console.log(navigate);
+    navigate("test");
+    setTimeout(()=>{
+        navigate("/");
+    }, 7000);
+};
+functions.mainPage = function(data) {
+    const { items , loadingMsg  } = data.data;
+    const navigate = data.navigate;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: " TYEST "
+        children: items !== undefined && Object.keys(items).length > 0 ? (console.log("sdghnfder"), functions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            className: "loading-container",
+            children: loadingMsg
         }, void 0, false, {
             fileName: "src/components/App-model.js",
-            lineNumber: 17,
-            columnNumber: 7
-        }, this)
+            lineNumber: 31,
+            columnNumber: 12
+        }, this))
     }, void 0, false);
-};
-functions.mainPage = function() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-        children: " TEST "
-    }, void 0, false, {
-        fileName: "src/components/App-model.js",
-        lineNumber: 23,
-        columnNumber: 10
-    }, this);
 };
 functions.secondPage = function() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
         children: " GDSGHDFHDSFHFDS "
     }, void 0, false, {
         fileName: "src/components/App-model.js",
-        lineNumber: 27,
+        lineNumber: 37,
         columnNumber: 10
     }, this);
 };
-function createLabel(data) {
+function createLabel(data, navigate) {
     // console.log(data, "Creating label....");
     const items = Object.keys(data);
     return items.map((item, idx)=>{
         const { id , name , url , thumbnailUrl  } = data[item];
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: `item-container ${item}`,
-            onClick: functions.getInfo,
+            onClick: ()=>{
+                functions.getInfo(navigate);
+            },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                     className: "itm-img-section",
@@ -27346,7 +27349,7 @@ function createLabel(data) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 55,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27358,13 +27361,13 @@ function createLabel(data) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 61,
+                            lineNumber: 63,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 54,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27372,7 +27375,7 @@ function createLabel(data) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 63,
+                    lineNumber: 65,
                     columnNumber: 9
                 }, this)
             ]

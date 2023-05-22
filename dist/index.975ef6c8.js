@@ -27164,12 +27164,12 @@ var _s = $RefreshSig$();
 //------------------
 function App() {
     _s();
+    const navigate = (0, _reactRouterDom.useNavigate)();
     const [data, setData] = (0, _react.useState)({
         //app info:
         items: {},
         loadingMsg: "Loading..."
     });
-    const navigate = (0, _reactRouterDom.useNavigate)();
     //function that will run after first mount:
     (0, _react.useEffect)(()=>{
         //console.log("UseEffect - running");
@@ -27194,7 +27194,7 @@ function App() {
                 children: " CATALOG API "
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 45,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27204,7 +27204,7 @@ function App() {
                 children: "https://catalog.roblox.com/v1/search/items/details?Category=11&SortType=3&Limit=10"
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 48,
+                lineNumber: 47,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27221,42 +27221,42 @@ function App() {
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 61,
+                                lineNumber: 60,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 exact: true,
                                 path: "/:item",
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).secondPage, {}, void 0, false, void 0, void 0)
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).showItemInfo, {}, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 67,
+                                lineNumber: 66,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/App.js",
-                        lineNumber: 60,
+                        lineNumber: 59,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 58,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 57,
+                lineNumber: 56,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 43,
+        lineNumber: 42,
         columnNumber: 5
     }, this);
 }
-_s(App, "Qro6HLX5aohI/nhFZNcIEaKvirk=", false, function() {
+_s(App, "5wCt3zE/HFefivMb2SByTbZcnUw=", false, function() {
     return [
         (0, _reactRouterDom.useNavigate)
     ];
@@ -27297,34 +27297,27 @@ const functions = {
     createLabel,
     getResponse
 };
-//This function is responsible for showing information regarding one item:
-functions.getInfo = function(navigate) {
-    console.log(navigate);
-    navigate("test");
-    setTimeout(()=>{
-        navigate("/");
-    }, 7000);
-};
 functions.mainPage = function(data) {
     const { items , loadingMsg  } = data.data;
     const navigate = data.navigate;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: items !== undefined && Object.keys(items).length > 0 ? (console.log("sdghnfder"), functions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+        children: items !== undefined && Object.keys(items).length > 0 ? (console.log("Items found"), functions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             className: "loading-container",
             children: loadingMsg
         }, void 0, false, {
             fileName: "src/components/App-model.js",
-            lineNumber: 31,
+            lineNumber: 21,
             columnNumber: 12
         }, this))
     }, void 0, false);
 };
-functions.secondPage = function() {
+functions.showItemInfo = function(data) {
+    console.log(data);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
         children: " GDSGHDFHDSFHFDS "
     }, void 0, false, {
         fileName: "src/components/App-model.js",
-        lineNumber: 37,
+        lineNumber: 28,
         columnNumber: 10
     }, this);
 };
@@ -27335,8 +27328,11 @@ function createLabel(data, navigate) {
         const { id , name , url , thumbnailUrl  } = data[item];
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: `item-container ${item}`,
+            // onClick={() => {
+            //   functions.getInfo(navigate);
+            // }}
             onClick: ()=>{
-                functions.getInfo(navigate);
+                navigate("TEST");
             },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27349,7 +27345,7 @@ function createLabel(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 57,
+                            lineNumber: 51,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27361,13 +27357,13 @@ function createLabel(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 63,
+                            lineNumber: 57,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 56,
+                    lineNumber: 50,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27375,17 +27371,25 @@ function createLabel(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 65,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 49,
+            lineNumber: 40,
             columnNumber: 7
         }, this);
     });
 }
+//This function is responsible for showing information regarding one item:
+functions.getInfo = function(navigate) {
+    console.log(navigate);
+    navigate("test");
+    setTimeout(()=>{
+        navigate("/");
+    }, 7000);
+};
 async function getResponse(Link) {
     const response = await fetch(Link); //request API data.
     const jsonData = await response.json();

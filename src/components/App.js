@@ -6,13 +6,12 @@ import functions from "./App-model"; //Helper functions that support the overall
 import { Routes, Route, useNavigate } from "react-router-dom";
 //------------------
 function App() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     //app info:
     items: {}, //all items
     loadingMsg: "Loading...", //msgs for the loading (DEFAULT: Loading...)
   });
-
-  const navigate = useNavigate();
 
   //function that will run after first mount:
   useEffect(() => {
@@ -64,7 +63,7 @@ function App() {
               element={<functions.mainPage data={data} navigate={navigate} />}
             />
 
-            <Route exact path="/:item" element={<functions.secondPage />} />
+            <Route exact path="/:item" element={<functions.showItemInfo />} />
           </Routes>
         </li>
       </div>

@@ -27226,8 +27226,12 @@ function App() {
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                                 exact: true,
-                                path: "/:item",
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).showItemInfo, {}, void 0, false, void 0, void 0)
+                                path: "/:itemName" //itemName is a variable.
+                                ,
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).showItemInfo, {
+                                    data: data,
+                                    navigate: navigate
+                                }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
                                 lineNumber: 66,
@@ -27288,6 +27292,8 @@ parcelHelpers.export(exports, "getResponse", ()=>getResponse);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
 //
 //
 const vars = {
@@ -27297,30 +27303,48 @@ const functions = {
     createLabel,
     getResponse
 };
-functions.mainPage = function(data) {
-    const { items , loadingMsg  } = data.data;
-    const navigate = data.navigate;
+functions.mainPage = function(props) {
+    const { items , loadingMsg  } = props.data;
+    const navigate = props.navigate;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: items !== undefined && Object.keys(items).length > 0 ? (console.log("Items found"), functions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             className: "loading-container",
             children: loadingMsg
         }, void 0, false, {
             fileName: "src/components/App-model.js",
-            lineNumber: 21,
+            lineNumber: 23,
             columnNumber: 12
         }, this))
     }, void 0, false);
 };
-functions.showItemInfo = function(data) {
-    console.log(data);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-        children: " GDSGHDFHDSFHFDS "
-    }, void 0, false, {
-        fileName: "src/components/App-model.js",
-        lineNumber: 28,
-        columnNumber: 10
-    }, this);
-};
+functions.showItemInfo = _s(function(props) {
+    _s();
+    const { itemName  } = (0, _reactRouterDom.useParams)(); //useParams allows us to read the headers incoming information.
+    const { items  } = props.data; //ALL of the items.
+    const ITEM = items[itemName];
+    const navigate = props.navigate;
+    if (ITEM !== undefined) {
+        console.log(ITEM);
+        setTimeout(()=>{
+        //  navigate("/");
+        }, 7000);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: [
+                " ",
+                ITEM.name,
+                " "
+            ]
+        }, void 0, true, {
+            fileName: "src/components/App-model.js",
+            lineNumber: 39,
+            columnNumber: 12
+        }, this);
+    }
+}, "odCdGIzUqLnCdCeOwpOIJUTcRpU=", false, function() {
+    return [
+        (0, _reactRouterDom.useParams)
+    ];
+});
 function createLabel(data, navigate) {
     // console.log(data, "Creating label....");
     const items = Object.keys(data);
@@ -27328,11 +27352,8 @@ function createLabel(data, navigate) {
         const { id , name , url , thumbnailUrl  } = data[item];
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: `item-container ${item}`,
-            // onClick={() => {
-            //   functions.getInfo(navigate);
-            // }}
             onClick: ()=>{
-                navigate("TEST");
+                navigate(name);
             },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27345,7 +27366,7 @@ function createLabel(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 51,
+                            lineNumber: 60,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27357,13 +27378,13 @@ function createLabel(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 57,
+                            lineNumber: 66,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 50,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27371,25 +27392,17 @@ function createLabel(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 59,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 40,
+            lineNumber: 52,
             columnNumber: 7
         }, this);
     });
 }
-//This function is responsible for showing information regarding one item:
-functions.getInfo = function(navigate) {
-    console.log(navigate);
-    navigate("test");
-    setTimeout(()=>{
-        navigate("/");
-    }, 7000);
-};
 async function getResponse(Link) {
     const response = await fetch(Link); //request API data.
     const jsonData = await response.json();
@@ -27402,7 +27415,7 @@ exports.default = functions; //[NOTE]: functions can be exported one by one or a
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gkKU3":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router-dom":"9xmpe"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27567,7 +27580,7 @@ function registerExportsForReactRefresh(module1) {
 
 },{"77301ca4ad95ab6c":"786KC"}],"9xmpe":[function(require,module,exports) {
 /**
- * React Router DOM v6.11.1
+ * React Router DOM v6.11.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -28482,7 +28495,7 @@ let savedScrollPositions = {};
 
 },{"react":"21dqq","react-router":"dbWyW","@remix-run/router":"5ncDG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dbWyW":[function(require,module,exports) {
 /**
- * React Router v6.11.1
+ * React Router v6.11.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -28669,6 +28682,7 @@ function useIsomorphicLayoutEffect(cb) {
 function useNavigateUnstable() {
     !useInRouterContext() && (0, _router.UNSAFE_invariant)(false, // router loaded. We can help them understand how to avoid that.
     "useNavigate() may be used only in the context of a <Router> component.");
+    let dataRouterContext = _react.useContext(DataRouterContext);
     let { basename , navigator  } = _react.useContext(NavigationContext);
     let { matches  } = _react.useContext(RouteContext);
     let { pathname: locationPathname  } = useLocation();
@@ -28687,10 +28701,12 @@ function useNavigateUnstable() {
             return;
         }
         let path = (0, _router.resolveTo)(to, JSON.parse(routePathnamesJson), locationPathname, options.relative === "path"); // If we're operating within a basename, prepend it to the pathname prior
-        // to handing off to history.  If this is a root navigation, then we
-        // navigate to the raw basename which allows the basename to have full
-        // control over the presence of a trailing slash on root links
-        if (basename !== "/") path.pathname = path.pathname === "/" ? basename : (0, _router.joinPaths)([
+        // to handing off to history (but only if we're not in a data router,
+        // otherwise it'll prepend the basename inside of the router).
+        // If this is a root navigation, then we navigate to the raw basename
+        // which allows the basename to have full control over the presence of a
+        // trailing slash on root links
+        if (dataRouterContext == null && basename !== "/") path.pathname = path.pathname === "/" ? basename : (0, _router.joinPaths)([
             basename,
             path.pathname
         ]);
@@ -28699,7 +28715,8 @@ function useNavigateUnstable() {
         basename,
         navigator,
         routePathnamesJson,
-        locationPathname
+        locationPathname,
+        dataRouterContext
     ]);
     return navigate;
 }
@@ -29570,7 +29587,7 @@ function createMemoryRouter(routes, opts) {
 
 },{"react":"21dqq","@remix-run/router":"5ncDG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5ncDG":[function(require,module,exports) {
 /**
- * @remix-run/router v1.6.1
+ * @remix-run/router v1.6.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -31002,10 +31019,12 @@ const defaultMapRouteProperties = (route)=>({
                 }
             });
             return;
-        } // Short circuit if it's only a hash change and not a mutation submission
+        } // Short circuit if it's only a hash change and not a mutation submission.
+        // Ignore on initial page loads because since the initial load will always
+        // be "same hash".
         // For example, on /page#hash and submit a <Form method="post"> which will
         // default to a navigation to /page
-        if (isHashChangeOnly(state.location, location) && !(opts && opts.submission && isMutationMethod(opts.submission.formMethod))) {
+        if (state.initialized && isHashChangeOnly(state.location, location) && !(opts && opts.submission && isMutationMethod(opts.submission.formMethod))) {
             completeNavigation(location, {
                 matches
             });
@@ -31761,7 +31780,8 @@ const defaultMapRouteProperties = (route)=>({
         return null;
     }
     function _internalSetRoutes(newRoutes) {
-        inFlightDataRoutes = newRoutes;
+        manifest = {};
+        inFlightDataRoutes = convertRoutesToDataRoutes(newRoutes, mapRouteProperties, undefined, manifest);
     }
     router = {
         get basename () {
@@ -32680,12 +32700,14 @@ function stripHashFromPath(path) {
 }
 function isHashChangeOnly(a, b) {
     if (a.pathname !== b.pathname || a.search !== b.search) return false;
-    if (a.hash === "") // No hash -> hash
+    if (a.hash === "") // /page -> /page#hash
     return b.hash !== "";
-    else if (a.hash === b.hash) // current hash -> same hash
+    else if (a.hash === b.hash) // /page#hash -> /page#hash
     return true;
-    else if (b.hash !== "") // current hash -> new hash
+    else if (b.hash !== "") // /page#hash -> /page#other
     return true;
+     // If the hash is removed the browser will re-perform a request to the server
+    // /page#hash -> /page
     return false;
 }
 function isDeferredResult(result) {

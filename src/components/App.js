@@ -63,7 +63,13 @@ function App() {
               element={<functions.mainPage data={data} navigate={navigate} />}
             />
 
-            <Route exact path="/:item" element={<functions.showItemInfo />} />
+            <Route
+              exact
+              path="/:itemName" //itemName is a variable.
+              element={
+                <functions.showItemInfo data={data} navigate={navigate} />
+              }
+            />
           </Routes>
         </li>
       </div>

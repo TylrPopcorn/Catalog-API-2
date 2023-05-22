@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 //
 //
 const vars = {
@@ -10,9 +11,10 @@ const functions = {
   getResponse,
 };
 
-functions.mainPage = function (data) {
-  const { items, loadingMsg } = data.data;
-  const navigate = data.navigate;
+functions.mainPage = function (props) {
+  const { items, loadingMsg } = props.data;
+  const navigate = props.navigate;
+
   return (
     <>
       {items !== undefined && Object.keys(items).length > 0
@@ -23,9 +25,19 @@ functions.mainPage = function (data) {
   );
 };
 
-functions.showItemInfo = function (data) {
-  console.log(data);
-  return <h1> GDSGHDFHDSFHFDS </h1>;
+functions.showItemInfo = function (props) {
+  const { itemName } = useParams(); //useParams allows us to read the headers incoming information.
+  const { items } = props.data; //ALL of the items.
+  const ITEM = items[itemName];
+  const navigate = props.navigate;
+
+  if (ITEM !== undefined) {
+    console.log(ITEM);
+    setTimeout(() => {
+      //  navigate("/");
+    }, 7000);
+    return <h1> {ITEM.name} </h1>;
+  }
 };
 
 //This function is repsonsible for creating each label in the list:
@@ -40,11 +52,8 @@ export function createLabel(data, navigate) {
       <div
         className={`item-container ${item}`}
         key={id || idx}
-        // onClick={() => {
-        //   functions.getInfo(navigate);
-        // }}
         onClick={() => {
-          navigate("TEST");
+          navigate(name);
         }}
       >
         <div className="itm-img-section">
@@ -61,16 +70,6 @@ export function createLabel(data, navigate) {
     );
   });
 }
-
-//This function is responsible for showing information regarding one item:
-functions.getInfo = function (navigate) {
-  console.log(navigate);
-  navigate("test");
-
-  setTimeout(() => {
-    navigate("/");
-  }, 7000);
-};
 
 //This is responsible for getting and returning any kind of response from an API.
 export async function getResponse(Link) {

@@ -10,30 +10,21 @@ const functions = {
   getResponse,
 };
 
-//This function is responsible for showing information regarding one item:
-functions.getInfo = function (navigate) {
-  console.log(navigate);
-  navigate("test");
-
-  setTimeout(() => {
-    navigate("/");
-  }, 7000);
-};
-
 functions.mainPage = function (data) {
   const { items, loadingMsg } = data.data;
   const navigate = data.navigate;
   return (
     <>
       {items !== undefined && Object.keys(items).length > 0
-        ? (console.log("sdghnfder"), functions.createLabel(items, navigate))
+        ? (console.log("Items found"), functions.createLabel(items, navigate))
         : (console.log("NO DATA"),
           (<p className="loading-container">{loadingMsg}</p>))}
     </>
   );
 };
 
-functions.secondPage = function () {
+functions.showItemInfo = function (data) {
+  console.log(data);
   return <h1> GDSGHDFHDSFHFDS </h1>;
 };
 
@@ -49,8 +40,11 @@ export function createLabel(data, navigate) {
       <div
         className={`item-container ${item}`}
         key={id || idx}
+        // onClick={() => {
+        //   functions.getInfo(navigate);
+        // }}
         onClick={() => {
-          functions.getInfo(navigate);
+          navigate("TEST");
         }}
       >
         <div className="itm-img-section">
@@ -67,6 +61,16 @@ export function createLabel(data, navigate) {
     );
   });
 }
+
+//This function is responsible for showing information regarding one item:
+functions.getInfo = function (navigate) {
+  console.log(navigate);
+  navigate("test");
+
+  setTimeout(() => {
+    navigate("/");
+  }, 7000);
+};
 
 //This is responsible for getting and returning any kind of response from an API.
 export async function getResponse(Link) {

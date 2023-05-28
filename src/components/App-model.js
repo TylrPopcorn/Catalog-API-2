@@ -37,6 +37,16 @@ functions.showItemInfo = function (props) {
       //  navigate("/");
     }, 7000);
     return <h1> {ITEM.name} </h1>;
+  } else {
+    console.log("NO WAY");
+    console.log(itemName);
+    return (
+      <div className="error-page">
+        <p className="error-title"> HAT NOT FOUND</p>
+        <p className="error-description">test</p>
+        <button>test</button>
+      </div>
+    );
   }
 };
 

@@ -119,4 +119,30 @@ code {
   overflow: hidden;
 }
 
+.error-page {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.error-page .error-title {
+  width: 80%;
+  text-align: center;
+  text-shadow: 0 0 .035em #000, 0 2px .1em #000;
+  background-color: red;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.error-page .error-description {
+  color: var(--var-neon);
+  background-color: red;
+}
+
+.error-page button {
+  height: 60px;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
 /*# sourceMappingURL=index.3b8f328d.css.map */

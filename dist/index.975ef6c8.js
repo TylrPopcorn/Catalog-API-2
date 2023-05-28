@@ -27339,6 +27339,41 @@ functions.showItemInfo = _s(function(props) {
             lineNumber: 39,
             columnNumber: 12
         }, this);
+    } else {
+        console.log("NO WAY");
+        console.log(itemName);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "error-page",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    className: "error-title",
+                    children: " HAT NOT FOUND"
+                }, void 0, false, {
+                    fileName: "src/components/App-model.js",
+                    lineNumber: 45,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    className: "error-description",
+                    children: "test"
+                }, void 0, false, {
+                    fileName: "src/components/App-model.js",
+                    lineNumber: 46,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    children: "test"
+                }, void 0, false, {
+                    fileName: "src/components/App-model.js",
+                    lineNumber: 47,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/App-model.js",
+            lineNumber: 44,
+            columnNumber: 7
+        }, this);
     }
 }, "odCdGIzUqLnCdCeOwpOIJUTcRpU=", false, function() {
     return [
@@ -27366,7 +27401,7 @@ function createLabel(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 60,
+                            lineNumber: 70,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27378,13 +27413,13 @@ function createLabel(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 66,
+                            lineNumber: 76,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 59,
+                    lineNumber: 69,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27392,13 +27427,13 @@ function createLabel(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 68,
+                    lineNumber: 78,
                     columnNumber: 9
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 52,
+            lineNumber: 62,
             columnNumber: 7
         }, this);
     });

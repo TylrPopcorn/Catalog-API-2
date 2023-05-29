@@ -38,13 +38,14 @@ functions.showItemInfo = function (props) {
     }, 7000);
     return <h1> {ITEM.name} </h1>;
   } else {
+    //The page CANNOT be found.
     console.log("NO WAY");
-    console.log(itemName);
+
     return (
       <div className="error-page">
-        <p className="error-title"> HAT NOT FOUND</p>
-        <p className="error-description">test</p>
-        <button>test</button>
+        <p className="error-title"> ITEM NOT FOUND</p>
+        <p className="error-description">{itemName}</p>
+        <button>BACK</button>
       </div>
     );
   }

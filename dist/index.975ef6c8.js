@@ -27340,38 +27340,38 @@ functions.showItemInfo = _s(function(props) {
             columnNumber: 12
         }, this);
     } else {
+        //The page CANNOT be found.
         console.log("NO WAY");
-        console.log(itemName);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "error-page",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "error-title",
-                    children: " HAT NOT FOUND"
-                }, void 0, false, {
-                    fileName: "src/components/App-model.js",
-                    lineNumber: 45,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    className: "error-description",
-                    children: "test"
+                    children: " ITEM NOT FOUND"
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
                     lineNumber: 46,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    children: "test"
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    className: "error-description",
+                    children: itemName
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
                     lineNumber: 47,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    children: "BACK"
+                }, void 0, false, {
+                    fileName: "src/components/App-model.js",
+                    lineNumber: 48,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 7
         }, this);
     }
@@ -27401,7 +27401,7 @@ function createLabel(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 70,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27413,13 +27413,13 @@ function createLabel(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 76,
+                            lineNumber: 77,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 69,
+                    lineNumber: 70,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27427,13 +27427,13 @@ function createLabel(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 62,
+            lineNumber: 63,
             columnNumber: 7
         }, this);
     });

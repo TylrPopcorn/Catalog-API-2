@@ -11,7 +11,7 @@ code {
 }
 
 :root {
-  --var-neon: rgb(14, 238, 133);
+  --var-neon: rgb(238, 14, 227);
 }
 
 .App {
@@ -143,26 +143,16 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -20px;
 }
-/* 
-.error-page p {
-  margin-top: 15px;
-  margin-bottom: 15px;
 
-  background-color: var(--var-neon);
-  text-align: center;
-  text-shadow: 0 0 0.035em black, 0 2 0.1em black; 
-  width: 100%;
-  border-radius: 10%;
-  box-shadow: inset 0 0 0.2em black;
-  box-shadow: 0 0 0.5em 0 var(--var-neon);
-  font-weight: bold;
-  font-size: 120%;
-} */
+.error-page p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 .error-page .error-title {
-  background-color: red;
-
   width: 80%;
   text-align: center;
   text-shadow: 0 0 0.035em black, 0 2 0.1em black;
@@ -171,15 +161,43 @@ code {
 }
 
 .error-page .error-description {
-  background-color: red;
-
-  color: var(--var-neon);
+  color: black;
+  border-radius: 25%;
+  padding: 5px;
+  text-align: center;
+  text-shadow: 0 0 1em black;
+  background-color: var(--var-neon);
+  box-shadow: 0 0 0.5em 0 var(--var-neon);
+  font-size: 90%;
+  width: 100%;
+  margin-top: -15px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .error-page button {
   height: 60px;
-  width: 50%;
-  margin-bottom: 30px;
+  width: 15%;
+  margin-bottom: 20px;
+
+  font-size: 90%;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--var-neon);
+  box-shadow: 0 0 0.2em var(--var-neon), inset 0 0 0.3em black;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px 2px var(--var-neon);
+}
+
+/* When the button on error page gets hovered over: */
+.error-page button:hover {
+  color: var(--var-neon);
+  background-color: rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 0.4em var(--var-neon);
+  text-shadow: 0 0 1em var(--var-neon);
+  text-shadow: 1px 1px 2px var(--var-neon);
+  border: 3px solid var(--var-neon);
 }
 
 /* CREDIT: https://codepen.io/kevinpowell/pen/QWdRzON?editors=1100 */

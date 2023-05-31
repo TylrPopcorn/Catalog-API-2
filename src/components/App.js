@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import functions from "./App-model"; //Helper functions that support the overall app function
-//import {createLabel, getResponse,} from "./App-model"; //helper functions
+import Functions from "./App-model"; //Helper functions that support the overall component.
 
 import { Routes, Route, useNavigate } from "react-router-dom";
 //------------------
@@ -20,13 +19,13 @@ function App() {
 
     setTimeout(async () => {
       //Attempt to get any current hats in the database:
-      let CURRENT_hats = await functions.getResponse(
+      let CURRENT_hats = await Functions.getResponse(
         "http://localhost:9000/api/hats/"
       );
 
       if (Object.keys(CURRENT_hats).length <= 0) {
         //IF there are no hats in the database, import some starters.
-        CURRENT_hats = await functions.getResponse(
+        CURRENT_hats = await Functions.getResponse(
           "http://localhost:9000/api/hats/imports"
         );
       }
@@ -55,20 +54,17 @@ function App() {
       {/* LIST CONTAINER */}
       <div className="list-container">
         <li>
-          {/* <functions.mainPage /> */}
           <Routes>
-            <Route
+            <Route //MAIN PAGE
               exact
               path="/"
-              element={<functions.mainPage data={data} navigate={navigate} />}
+              element={<Functions.HOME_Page data={data} navigate={navigate} />}
             />
 
-            <Route
+            <Route //ITEM INFO PAGE
               exact
               path="/:itemName" //itemName is a variable.
-              element={
-                <functions.showItemInfo data={data} navigate={navigate} />
-              }
+              element={<Functions.ITEM_Page data={data} navigate={navigate} />}
             />
           </Routes>
         </li>

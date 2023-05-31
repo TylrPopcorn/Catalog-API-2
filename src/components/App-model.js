@@ -1,36 +1,47 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+//vars
 //
-//
-const vars = {
-  //extra variables, debounecs, tables, etc that this file may need.
-};
-const functions = {
-  //all functions jumbled together to be exported.
-  createLabel,
-  getResponse,
+const Functions = {
+  //Functions that DO get sent back to the main
 };
 
-functions.mainPage = function (props) {
+const internalFunctions = {
+  //Functions that do NOT get sent back to the main.
+};
+//
+//------- ------- ------- -------     [FUNCTIONS]     --------  --------  --------  ---------
+//
+//
+Functions.HOME_Page = function (props) {
   const { items, loadingMsg } = props.data;
   const navigate = props.navigate;
 
   return (
     <>
       {items !== undefined && Object.keys(items).length > 0
-        ? (console.log("Items found"), functions.createLabel(items, navigate))
+        ? (console.log("Items found"),
+          internalFunctions.createLabel(items, navigate))
         : (console.log("NO DATA"),
           (<p className="loading-container">{loadingMsg}</p>))}
     </>
   );
 };
 
-functions.showItemInfo = function (props) {
+Functions.ITEM_Page = function (props) {
   const { itemName } = useParams(); //useParams allows us to read the headers incoming information.
   const { items } = props.data; //ALL of the items.
   const ITEM = items[itemName];
-  const navigate = props.navigate;
 
+  function onClick() {
+    //This function is responsible for sending the user back to the main page.
+    const navigate = props.navigate;
+
+    navigate("/");
+  }
+
+  //---------------
+  //--Start:
   if (ITEM !== undefined) {
     console.log(ITEM);
     setTimeout(() => {
@@ -45,14 +56,23 @@ functions.showItemInfo = function (props) {
       <div className="error-page">
         <p className="error-title"> ITEM NOT FOUND</p>
         <p className="error-description">{itemName}</p>
-        <button>BACK</button>
+        <button onClick={onClick}>BACK</button>
       </div>
     );
   }
 };
 
+//This is responsible for getting and returning any kind of response from an API.
+Functions.getResponse = async function (Link) {
+  const response = await fetch(Link); //request API data.
+  const jsonData = await response.json();
+  return jsonData; //data.
+};
+//
+//------- ------- ------- -------     [Internal FUNCTIONS]     --------  --------  --------  ---------
+//
 //This function is repsonsible for creating each label in the list:
-export function createLabel(data, navigate) {
+internalFunctions.createLabel = function (data, navigate) {
   // console.log(data, "Creating label....");
   const items = Object.keys(data);
 
@@ -80,14 +100,7 @@ export function createLabel(data, navigate) {
       </div>
     );
   });
-}
+};
 
-//This is responsible for getting and returning any kind of response from an API.
-export async function getResponse(Link) {
-  const response = await fetch(Link); //request API data.
-  const jsonData = await response.json();
-  return jsonData; //data.
-}
-
-export default functions;
+export default Functions;
 //[NOTE]: functions can be exported one by one or all together like done by the line above.

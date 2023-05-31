@@ -27156,9 +27156,8 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _appModel = require("./App-model"); //Helper functions that support the overall app function
+var _appModel = require("./App-model"); //Helper functions that support the overall component.
 var _appModelDefault = parcelHelpers.interopDefault(_appModel);
-//import {createLabel, getResponse,} from "./App-model"; //helper functions
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 //------------------
@@ -27194,7 +27193,7 @@ function App() {
                 children: " CATALOG API "
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 44,
+                lineNumber: 43,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27204,7 +27203,7 @@ function App() {
                 children: "https://catalog.roblox.com/v1/search/items/details?Category=11&SortType=3&Limit=10"
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 47,
+                lineNumber: 46,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27212,51 +27211,53 @@ function App() {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route //MAIN PAGE
+                            ), {
                                 exact: true,
                                 path: "/",
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).mainPage, {
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).HOME_Page, {
                                     data: data,
                                     navigate: navigate
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 60,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route //ITEM INFO PAGE
+                            ), {
                                 exact: true,
                                 path: "/:itemName" //itemName is a variable.
                                 ,
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).showItemInfo, {
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).ITEM_Page, {
                                     data: data,
                                     navigate: navigate
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 66,
+                                lineNumber: 64,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/App.js",
-                        lineNumber: 59,
+                        lineNumber: 57,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 57,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 56,
+                lineNumber: 55,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 42,
+        lineNumber: 41,
         columnNumber: 5
     }, this);
 }
@@ -27285,44 +27286,47 @@ $parcel$ReactRefreshHelpers$02aa.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-//This function is repsonsible for creating each label in the list:
-parcelHelpers.export(exports, "createLabel", ()=>createLabel);
-//This is responsible for getting and returning any kind of response from an API.
-parcelHelpers.export(exports, "getResponse", ()=>getResponse);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
+//vars
+//
+const Functions = {
+};
+const internalFunctions = {
+};
+//
+//------- ------- ------- -------     [FUNCTIONS]     --------  --------  --------  ---------
 //
 //
-const vars = {
-};
-const functions = {
-    //all functions jumbled together to be exported.
-    createLabel,
-    getResponse
-};
-functions.mainPage = function(props) {
+Functions.HOME_Page = function(props) {
     const { items , loadingMsg  } = props.data;
     const navigate = props.navigate;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: items !== undefined && Object.keys(items).length > 0 ? (console.log("Items found"), functions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+        children: items !== undefined && Object.keys(items).length > 0 ? (console.log("Items found"), internalFunctions.createLabel(items, navigate)) : (console.log("NO DATA"), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             className: "loading-container",
             children: loadingMsg
         }, void 0, false, {
             fileName: "src/components/App-model.js",
-            lineNumber: 23,
+            lineNumber: 26,
             columnNumber: 12
         }, this))
     }, void 0, false);
 };
-functions.showItemInfo = _s(function(props) {
+Functions.ITEM_Page = _s(function(props) {
     _s();
     const { itemName  } = (0, _reactRouterDom.useParams)(); //useParams allows us to read the headers incoming information.
     const { items  } = props.data; //ALL of the items.
     const ITEM = items[itemName];
-    const navigate = props.navigate;
+    function onClick() {
+        //This function is responsible for sending the user back to the main page.
+        const navigate = props.navigate;
+        navigate("/");
+    }
+    //---------------
+    //--Start:
     if (ITEM !== undefined) {
         console.log(ITEM);
         setTimeout(()=>{
@@ -27336,7 +27340,7 @@ functions.showItemInfo = _s(function(props) {
             ]
         }, void 0, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 39,
+            lineNumber: 50,
             columnNumber: 12
         }, this);
     } else {
@@ -27350,7 +27354,7 @@ functions.showItemInfo = _s(function(props) {
                     children: " ITEM NOT FOUND"
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 46,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27358,20 +27362,21 @@ functions.showItemInfo = _s(function(props) {
                     children: itemName
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 47,
+                    lineNumber: 58,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    onClick: onClick,
                     children: "BACK"
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 48,
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 45,
+            lineNumber: 56,
             columnNumber: 7
         }, this);
     }
@@ -27380,7 +27385,17 @@ functions.showItemInfo = _s(function(props) {
         (0, _reactRouterDom.useParams)
     ];
 });
-function createLabel(data, navigate) {
+//This is responsible for getting and returning any kind of response from an API.
+Functions.getResponse = async function(Link) {
+    const response = await fetch(Link); //request API data.
+    const jsonData = await response.json();
+    return jsonData; //data.
+};
+//
+//------- ------- ------- -------     [Internal FUNCTIONS]     --------  --------  --------  ---------
+//
+//This function is repsonsible for creating each label in the list:
+internalFunctions.createLabel = function(data, navigate) {
     // console.log(data, "Creating label....");
     const items = Object.keys(data);
     return items.map((item, idx)=>{
@@ -27401,7 +27416,7 @@ function createLabel(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 71,
+                            lineNumber: 91,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27413,13 +27428,13 @@ function createLabel(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 77,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 70,
+                    lineNumber: 90,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27427,23 +27442,18 @@ function createLabel(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 79,
+                    lineNumber: 99,
                     columnNumber: 9
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 63,
+            lineNumber: 83,
             columnNumber: 7
         }, this);
     });
-}
-async function getResponse(Link) {
-    const response = await fetch(Link); //request API data.
-    const jsonData = await response.json();
-    return jsonData; //data.
-}
-exports.default = functions; //[NOTE]: functions can be exported one by one or all together like done by the line above.
+};
+exports.default = Functions; //[NOTE]: functions can be exported one by one or all together like done by the line above.
 
   $parcel$ReactRefreshHelpers$02aa.postlude(module);
 } finally {

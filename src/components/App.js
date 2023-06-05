@@ -14,7 +14,7 @@ function App() {
 
   //function that will run after first mount:
   useEffect(() => {
-    //console.log("UseEffect - running");
+    console.log("UseEffect - running");
     const randomTime = Math.floor(Math.random() * 1000) + 1000; //Loading effect.
 
     setTimeout(async () => {
@@ -53,7 +53,7 @@ function App() {
 
       {/* LIST CONTAINER */}
       <div className="list-container">
-        <li>
+        <li className>
           <Routes>
             <Route //MAIN PAGE
               exact
@@ -68,6 +68,12 @@ function App() {
             />
           </Routes>
         </li>
+      </div>
+
+      <div className="navigation" hidden={false}>
+        <button>BACK</button>
+        <p> Page 1 of 2 </p>
+        <button>NEXT</button>
       </div>
     </div>
   );

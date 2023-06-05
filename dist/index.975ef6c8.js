@@ -27171,7 +27171,7 @@ function App() {
     });
     //function that will run after first mount:
     (0, _react.useEffect)(()=>{
-        //console.log("UseEffect - running");
+        console.log("UseEffect - running");
         const randomTime = Math.floor(Math.random() * 1000) + 1000; //Loading effect.
         setTimeout(async ()=>{
             //Attempt to get any current hats in the database:
@@ -27209,6 +27209,7 @@ function App() {
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "list-container",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                    className: true,
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route //MAIN PAGE
@@ -27252,6 +27253,37 @@ function App() {
             }, void 0, false, {
                 fileName: "src/components/App.js",
                 lineNumber: 55,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "navigation",
+                hidden: false,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        children: "BACK"
+                    }, void 0, false, {
+                        fileName: "src/components/App.js",
+                        lineNumber: 74,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: " Page 1 of 2 "
+                    }, void 0, false, {
+                        fileName: "src/components/App.js",
+                        lineNumber: 75,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        children: "NEXT"
+                    }, void 0, false, {
+                        fileName: "src/components/App.js",
+                        lineNumber: 76,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/App.js",
+                lineNumber: 73,
                 columnNumber: 7
             }, this)
         ]
@@ -27300,7 +27332,6 @@ const internalFunctions = {
 //
 //------- ------- ------- -------     [FUNCTIONS]     --------  --------  --------  ---------
 //
-//
 Functions.HOME_Page = function(props) {
     const { items , loadingMsg  } = props.data;
     const navigate = props.navigate;
@@ -27310,7 +27341,7 @@ Functions.HOME_Page = function(props) {
             children: loadingMsg
         }, void 0, false, {
             fileName: "src/components/App-model.js",
-            lineNumber: 26,
+            lineNumber: 25,
             columnNumber: 12
         }, this))
     }, void 0, false);
@@ -27318,68 +27349,14 @@ Functions.HOME_Page = function(props) {
 Functions.ITEM_Page = _s(function(props) {
     _s();
     const { itemName  } = (0, _reactRouterDom.useParams)(); //useParams allows us to read the headers incoming information.
+    const navigate = props.navigate;
     const { items  } = props.data; //ALL of the items.
     const ITEM = items[itemName];
-    function onClick() {
-        //This function is responsible for sending the user back to the main page.
-        const navigate = props.navigate;
-        navigate("/");
-    }
     //---------------
     //--Start:
-    if (ITEM !== undefined) {
-        console.log(ITEM);
-        setTimeout(()=>{
-        //  navigate("/");
-        }, 7000);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: [
-                " ",
-                ITEM.name,
-                " "
-            ]
-        }, void 0, true, {
-            fileName: "src/components/App-model.js",
-            lineNumber: 50,
-            columnNumber: 12
-        }, this);
-    } else {
-        //The page CANNOT be found.
-        console.log("NO WAY");
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "error-page",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    className: "error-title",
-                    children: " ITEM NOT FOUND"
-                }, void 0, false, {
-                    fileName: "src/components/App-model.js",
-                    lineNumber: 57,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    className: "error-description",
-                    children: itemName
-                }, void 0, false, {
-                    fileName: "src/components/App-model.js",
-                    lineNumber: 58,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    onClick: onClick,
-                    children: "BACK"
-                }, void 0, false, {
-                    fileName: "src/components/App-model.js",
-                    lineNumber: 59,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/App-model.js",
-            lineNumber: 56,
-            columnNumber: 7
-        }, this);
-    }
+    if (ITEM !== undefined) return internalFunctions.ITEM_INFO_PAGE(ITEM, navigate);
+    else //The page CANNOT be found.
+    return internalFunctions.ERROR_PAGE(itemName, navigate);
 }, "odCdGIzUqLnCdCeOwpOIJUTcRpU=", false, function() {
     return [
         (0, _reactRouterDom.useParams)
@@ -27400,7 +27377,7 @@ internalFunctions.createLabel = function(data, navigate) {
     const items = Object.keys(data);
     return items.map((item, idx)=>{
         const { id , name , url , thumbnailUrl  } = data[item];
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        if (idx + 1 < 5) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: `item-container ${item}`,
             onClick: ()=>{
                 navigate(name);
@@ -27416,8 +27393,8 @@ internalFunctions.createLabel = function(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 91,
-                            columnNumber: 11
+                            lineNumber: 73,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             className: "item-id",
@@ -27428,31 +27405,90 @@ internalFunctions.createLabel = function(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 97,
-                            columnNumber: 11
+                            lineNumber: 79,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 90,
-                    columnNumber: 9
+                    lineNumber: 72,
+                    columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     className: "item-name",
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 99,
-                    columnNumber: 9
+                    lineNumber: 81,
+                    columnNumber: 11
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 83,
-            columnNumber: 7
+            lineNumber: 65,
+            columnNumber: 9
         }, this);
     });
 };
+//This function is responsible for SHOWING the error page.
+internalFunctions.ERROR_PAGE = function(itemName, navigate) {
+    function onClick() {
+        //This function is responsible for sending the user back to the main page.
+        navigate("/");
+    }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "error-page",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "error-title",
+                children: " ITEM NOT FOUND"
+            }, void 0, false, {
+                fileName: "src/components/App-model.js",
+                lineNumber: 97,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                className: "error-description",
+                children: itemName
+            }, void 0, false, {
+                fileName: "src/components/App-model.js",
+                lineNumber: 98,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: onClick,
+                children: "BACK"
+            }, void 0, false, {
+                fileName: "src/components/App-model.js",
+                lineNumber: 99,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/App-model.js",
+        lineNumber: 96,
+        columnNumber: 5
+    }, this);
+};
+//This function is responsible for SHOWING the items info on the page
+internalFunctions.ITEM_INFO_PAGE = function(ITEM, navigate) {
+    console.log(ITEM);
+    setTimeout(()=>{
+        navigate("/");
+    }, 7000);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+        children: [
+            " ",
+            ITEM.name,
+            " "
+        ]
+    }, void 0, true, {
+        fileName: "src/components/App-model.js",
+        lineNumber: 110,
+        columnNumber: 10
+    }, this);
+};
+//---exports:
 exports.default = Functions; //[NOTE]: functions can be exported one by one or all together like done by the line above.
 
   $parcel$ReactRefreshHelpers$02aa.postlude(module);

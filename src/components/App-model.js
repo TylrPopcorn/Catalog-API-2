@@ -27,18 +27,30 @@ Functions.HOME_Page = function (props) {
   );
 };
 
-Functions.ITEM_Page = function (props) {
+Functions.ITEM_Page = function (params) {
   const { itemName } = useParams(); //useParams allows us to read the headers incoming information.
+  const props = params.props;
+  //--
   const navigate = props.navigate;
-  const { items } = props.data; //ALL of the items.
+  const data = props.data;
+  //--
+  const { items } = data; //ALL of the items.
+  //--
   const ITEM = items[itemName];
 
+  //console.log(props); //For testing purposes.
   //---------------
   //--Start:
+  const navigationDiv = document.getElementsByClassName("navigation")[0];
+  if (navigationDiv != undefined) {
+    navigationDiv.setAttribute("hidden", "true");
+  }
+
   if (ITEM !== undefined) {
     return internalFunctions.ITEM_INFO_PAGE(ITEM, navigate);
   } else {
     //The page CANNOT be found.
+
     return internalFunctions.ERROR_PAGE(itemName, navigate);
   }
 };
@@ -103,6 +115,7 @@ internalFunctions.ERROR_PAGE = function (itemName, navigate) {
 
 //This function is responsible for SHOWING the items info on the page
 internalFunctions.ITEM_INFO_PAGE = function (ITEM, navigate) {
+  //TODO: FINISH
   console.log(ITEM);
   setTimeout(() => {
     navigate("/");

@@ -10,6 +10,12 @@ function App() {
     //app info:
     items: {}, //all items
     loadingMsg: "Loading...", //msgs for the loading (DEFAULT: Loading...)
+
+    bottomNavigation: {
+      visible: false,
+      right: false,
+      left: false,
+    },
   });
 
   //function that will run after first mount:
@@ -64,7 +70,16 @@ function App() {
             <Route //ITEM INFO PAGE
               exact
               path="/:itemName" //itemName is a variable.
-              element={<Functions.ITEM_Page data={data} navigate={navigate} />}
+              element={
+                <>
+                  <Functions.ITEM_Page
+                    props={{
+                      data: data,
+                      navigate: navigate,
+                    }}
+                  />
+                </>
+              }
             />
           </Routes>
         </li>

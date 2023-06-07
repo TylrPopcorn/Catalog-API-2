@@ -27167,7 +27167,12 @@ function App() {
     const [data, setData] = (0, _react.useState)({
         //app info:
         items: {},
-        loadingMsg: "Loading..."
+        loadingMsg: "Loading...",
+        bottomNavigation: {
+            visible: false,
+            right: false,
+            left: false
+        }
     });
     //function that will run after first mount:
     (0, _react.useEffect)(()=>{
@@ -27193,7 +27198,7 @@ function App() {
                 children: " CATALOG API "
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 43,
+                lineNumber: 49,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27203,7 +27208,7 @@ function App() {
                 children: "https://catalog.roblox.com/v1/search/items/details?Category=11&SortType=3&Limit=10"
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 46,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27222,7 +27227,7 @@ function App() {
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 58,
+                                lineNumber: 64,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route //ITEM INFO PAGE
@@ -27230,29 +27235,33 @@ function App() {
                                 exact: true,
                                 path: "/:itemName" //itemName is a variable.
                                 ,
-                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).ITEM_Page, {
-                                    data: data,
-                                    navigate: navigate
-                                }, void 0, false, void 0, void 0)
+                                element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appModelDefault.default).ITEM_Page, {
+                                        props: {
+                                            data: data,
+                                            navigate: navigate
+                                        }
+                                    }, void 0, false, void 0, void 0)
+                                }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 64,
+                                lineNumber: 70,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/App.js",
-                        lineNumber: 57,
+                        lineNumber: 63,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 56,
+                    lineNumber: 62,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 55,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27263,37 +27272,37 @@ function App() {
                         children: "BACK"
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 74,
+                        lineNumber: 89,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: " Page 1 of 2 "
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 75,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         children: "NEXT"
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 76,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 73,
+                lineNumber: 88,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 41,
+        lineNumber: 47,
         columnNumber: 5
     }, this);
 }
-_s(App, "5wCt3zE/HFefivMb2SByTbZcnUw=", false, function() {
+_s(App, "rUwfLkbSzE7Pe15lbu/0XdODVBg=", false, function() {
     return [
         (0, _reactRouterDom.useNavigate)
     ];
@@ -27346,14 +27355,22 @@ Functions.HOME_Page = function(props) {
         }, this))
     }, void 0, false);
 };
-Functions.ITEM_Page = _s(function(props) {
+Functions.ITEM_Page = _s(function(params) {
     _s();
     const { itemName  } = (0, _reactRouterDom.useParams)(); //useParams allows us to read the headers incoming information.
+    const props = params.props;
+    //--
     const navigate = props.navigate;
-    const { items  } = props.data; //ALL of the items.
+    const data = props.data;
+    //--
+    const { items  } = data; //ALL of the items.
+    //--
     const ITEM = items[itemName];
+    //console.log(props); //For testing purposes.
     //---------------
     //--Start:
+    const navigationDiv = document.getElementsByClassName("navigation")[0];
+    if (navigationDiv != undefined) navigationDiv.setAttribute("hidden", "true");
     if (ITEM !== undefined) return internalFunctions.ITEM_INFO_PAGE(ITEM, navigate);
     else //The page CANNOT be found.
     return internalFunctions.ERROR_PAGE(itemName, navigate);
@@ -27393,7 +27410,7 @@ internalFunctions.createLabel = function(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 73,
+                            lineNumber: 85,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27405,13 +27422,13 @@ internalFunctions.createLabel = function(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 79,
+                            lineNumber: 91,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 72,
+                    lineNumber: 84,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27419,13 +27436,13 @@ internalFunctions.createLabel = function(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 81,
+                    lineNumber: 93,
                     columnNumber: 11
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 65,
+            lineNumber: 77,
             columnNumber: 9
         }, this);
     });
@@ -27444,7 +27461,7 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: " ITEM NOT FOUND"
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 97,
+                lineNumber: 109,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27452,7 +27469,7 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: itemName
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 98,
+                lineNumber: 110,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27460,18 +27477,19 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: "BACK"
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 99,
+                lineNumber: 111,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App-model.js",
-        lineNumber: 96,
+        lineNumber: 108,
         columnNumber: 5
     }, this);
 };
 //This function is responsible for SHOWING the items info on the page
 internalFunctions.ITEM_INFO_PAGE = function(ITEM, navigate) {
+    //TODO: FINISH
     console.log(ITEM);
     setTimeout(()=>{
         navigate("/");
@@ -27484,7 +27502,7 @@ internalFunctions.ITEM_INFO_PAGE = function(ITEM, navigate) {
         ]
     }, void 0, true, {
         fileName: "src/components/App-model.js",
-        lineNumber: 110,
+        lineNumber: 123,
         columnNumber: 10
     }, this);
 };

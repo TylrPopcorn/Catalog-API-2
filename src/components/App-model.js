@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 //vars
 //
@@ -41,10 +41,12 @@ Functions.ITEM_Page = function (params) {
   //console.log(props); //For testing purposes.
   //---------------
   //--Start:
-  const navigationDiv = document.getElementsByClassName("navigation")[0];
-  if (navigationDiv != undefined) {
-    navigationDiv.setAttribute("hidden", "true");
-  }
+  // useEffect(() => {
+  //   const navigationDiv = document.getElementsByClassName("navigation")[0];
+  //   if (navigationDiv != undefined) {
+  //     navigationDiv.setAttribute("hidden", "true");
+  //   }
+  // }, []);
 
   if (ITEM !== undefined) {
     return internalFunctions.ITEM_INFO_PAGE(ITEM, navigate);
@@ -62,6 +64,20 @@ Functions.getResponse = async function (Link) {
   return jsonData; //data.
 };
 //
+//
+//
+
+//This function is responsible for hiding/showing navigation at the bottom.
+Functions.ShowNavigation = function (bool) {
+  const navigationDiv = document.getElementsByClassName("navigation")[0];
+  if (navigationDiv != undefined) {
+    if (bool === true) {
+      navigationDiv.setAttribute("hidden", "true");
+    } else {
+      navigationDiv.setAttribute("hidden", "false");
+    }
+  }
+};
 //------- ------- ------- -------     [Internal FUNCTIONS]     --------  --------  --------  ---------
 //
 //This function is repsonsible for creating each label in the list:

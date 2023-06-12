@@ -22,6 +22,7 @@ function App() {
   useEffect(() => {
     console.log("UseEffect - running");
     const randomTime = Math.floor(Math.random() * 1000) + 1000; //Loading effect.
+    const navigationDiv = document.getElementsByClassName("navigation")[0];
 
     setTimeout(async () => {
       //Attempt to get any current hats in the database:
@@ -86,9 +87,9 @@ function App() {
       </div>
 
       <div className="navigation" hidden={false}>
-        <button>BACK</button>
+        <button class="arrow-button left-arrow">&lt;</button>
         <p> Page 1 of 2 </p>
-        <button>NEXT</button>
+        <button class="arrow-button right-arrow">&gt;</button>
       </div>
     </div>
   );

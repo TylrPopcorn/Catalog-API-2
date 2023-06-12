@@ -27178,6 +27178,7 @@ function App() {
     (0, _react.useEffect)(()=>{
         console.log("UseEffect - running");
         const randomTime = Math.floor(Math.random() * 1000) + 1000; //Loading effect.
+        const navigationDiv = document.getElementsByClassName("navigation")[0];
         setTimeout(async ()=>{
             //Attempt to get any current hats in the database:
             let CURRENT_hats = await (0, _appModelDefault.default).getResponse("http://localhost:9000/api/hats/");
@@ -27198,7 +27199,7 @@ function App() {
                 children: " CATALOG API "
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 49,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -27208,7 +27209,7 @@ function App() {
                 children: "https://catalog.roblox.com/v1/search/items/details?Category=11&SortType=3&Limit=10"
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27227,7 +27228,7 @@ function App() {
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 64,
+                                lineNumber: 65,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route //ITEM INFO PAGE
@@ -27245,23 +27246,23 @@ function App() {
                                 }, void 0, false)
                             }, void 0, false, {
                                 fileName: "src/components/App.js",
-                                lineNumber: 70,
+                                lineNumber: 71,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/App.js",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/App.js",
-                    lineNumber: 62,
+                    lineNumber: 63,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/App.js",
-                lineNumber: 61,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27269,36 +27270,38 @@ function App() {
                 hidden: false,
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        children: "BACK"
+                        class: "arrow-button left-arrow",
+                        children: "<"
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 89,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: " Page 1 of 2 "
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 90,
+                        lineNumber: 91,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        children: "NEXT"
+                        class: "arrow-button right-arrow",
+                        children: ">"
                     }, void 0, false, {
                         fileName: "src/components/App.js",
-                        lineNumber: 91,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/App.js",
-                lineNumber: 88,
+                lineNumber: 89,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App.js",
-        lineNumber: 47,
+        lineNumber: 48,
         columnNumber: 5
     }, this);
 }
@@ -27369,8 +27372,12 @@ Functions.ITEM_Page = _s(function(params) {
     //console.log(props); //For testing purposes.
     //---------------
     //--Start:
-    const navigationDiv = document.getElementsByClassName("navigation")[0];
-    if (navigationDiv != undefined) navigationDiv.setAttribute("hidden", "true");
+    // useEffect(() => {
+    //   const navigationDiv = document.getElementsByClassName("navigation")[0];
+    //   if (navigationDiv != undefined) {
+    //     navigationDiv.setAttribute("hidden", "true");
+    //   }
+    // }, []);
     if (ITEM !== undefined) return internalFunctions.ITEM_INFO_PAGE(ITEM, navigate);
     else //The page CANNOT be found.
     return internalFunctions.ERROR_PAGE(itemName, navigate);
@@ -27386,6 +27393,16 @@ Functions.getResponse = async function(Link) {
     return jsonData; //data.
 };
 //
+//
+//
+//This function is responsible for hiding/showing navigation at the bottom.
+Functions.ShowNavigation = function(bool) {
+    const navigationDiv = document.getElementsByClassName("navigation")[0];
+    if (navigationDiv != undefined) {
+        if (bool === true) navigationDiv.setAttribute("hidden", "true");
+        else navigationDiv.setAttribute("hidden", "false");
+    }
+};
 //------- ------- ------- -------     [Internal FUNCTIONS]     --------  --------  --------  ---------
 //
 //This function is repsonsible for creating each label in the list:
@@ -27410,7 +27427,7 @@ internalFunctions.createLabel = function(data, navigate) {
                             src: thumbnailUrl
                         }, void 0, false, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 85,
+                            lineNumber: 101,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27422,13 +27439,13 @@ internalFunctions.createLabel = function(data, navigate) {
                             ]
                         }, void 0, true, {
                             fileName: "src/components/App-model.js",
-                            lineNumber: 91,
+                            lineNumber: 107,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 84,
+                    lineNumber: 100,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27436,13 +27453,13 @@ internalFunctions.createLabel = function(data, navigate) {
                     children: name
                 }, void 0, false, {
                     fileName: "src/components/App-model.js",
-                    lineNumber: 93,
+                    lineNumber: 109,
                     columnNumber: 11
                 }, this)
             ]
         }, id || idx, true, {
             fileName: "src/components/App-model.js",
-            lineNumber: 77,
+            lineNumber: 93,
             columnNumber: 9
         }, this);
     });
@@ -27461,7 +27478,7 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: " ITEM NOT FOUND"
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 109,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27469,7 +27486,7 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: itemName
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 110,
+                lineNumber: 126,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27477,13 +27494,13 @@ internalFunctions.ERROR_PAGE = function(itemName, navigate) {
                 children: "BACK"
             }, void 0, false, {
                 fileName: "src/components/App-model.js",
-                lineNumber: 111,
+                lineNumber: 127,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/App-model.js",
-        lineNumber: 108,
+        lineNumber: 124,
         columnNumber: 5
     }, this);
 };
@@ -27502,7 +27519,7 @@ internalFunctions.ITEM_INFO_PAGE = function(ITEM, navigate) {
         ]
     }, void 0, true, {
         fileName: "src/components/App-model.js",
-        lineNumber: 123,
+        lineNumber: 139,
         columnNumber: 10
     }, this);
 };
